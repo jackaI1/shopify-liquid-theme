@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "hero": {
+      "type": "meal-hero",
+      "settings": {
+        "heading": "Dinner for two, ready in twenty minutes",
+        "subheading": "<p>Fresh, portioned meals from our kitchen to your door.</p>",
+        "button_label": "Browse meals",
+        "button_link": "shopify://collections/all",
+        "accent_color": "#d9572b"
+      }
+    },
+    "how": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "How it works"
+      },
+      "blocks": {
+        "choose": {
+          "type": "step",
+          "settings": {
+            "title": "Choose",
+            "text": "Pick from this week's menu."
+          }
+        },
+        "heat": {
+          "type": "step",
+          "settings": {
+            "title": "Heat",
+            "text": "Every meal is ready in about 15 minutes."
+          }
+        },
+        "enjoy": {
+          "type": "step",
+          "settings": {
+            "title": "Enjoy",
+            "text": "Delivered chilled, in recyclable packaging."
+          }
+        }
+      },
+      "block_order": ["choose", "heat", "enjoy"]
+    }
+  },
+  "order": ["hero", "how"]
+}

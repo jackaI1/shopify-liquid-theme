@@ -1,0 +1,73 @@
+<section class="how-it-works">
+  <h2 class="how-it-works__heading">{{ section.settings.heading | escape }}</h2>
+  <ol class="how-it-works__steps">
+    {% for block in section.blocks %}
+      <li class="how-it-works__step" {{ block.shopify_attributes }}>
+        <h3 class="how-it-works__title">{{ block.settings.title | escape }}</h3>
+        <p>{{ block.settings.text | escape }}</p>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{% schema %}
+{
+  "name": "How it works",
+  "class": "section-how-it-works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How it works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "How it works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Choose",
+            "text": "Pick from this week's menu."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Heat",
+            "text": "Every meal is ready in about 15 minutes."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Enjoy",
+            "text": "Delivered chilled, in recyclable packaging."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

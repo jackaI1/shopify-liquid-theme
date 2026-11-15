@@ -1,0 +1,15 @@
+{
+  "name": "fresh-plate-theme",
+  "version": "1.0.0",
+  "description": "Shopify theme for Fresh Plate Kitchen, a fictional meal-delivery shop",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "theme:check": "npx --yes @shopify/cli@3 theme check --fail-level error",
+    "theme:dev": "npx --yes @shopify/cli@3 theme dev"
+  }
+}

@@ -1,0 +1,63 @@
+<section class="meal-hero" style="--hero-accent: {{ section.settings.accent_color }};">
+  <div class="meal-hero__text">
+    <h1 class="meal-hero__heading">{{ section.settings.heading | escape }}</h1>
+    {% if section.settings.subheading != blank %}
+      <div class="meal-hero__subheading rte">{{ section.settings.subheading }}</div>
+    {% endif %}
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
+    {% endif %}
+  </div>
+  {% if section.settings.image != blank %}
+    {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'meal-hero__image', loading: 'eager', sizes: '(min-width: 750px) 50vw, 100vw', alt: section.settings.image.alt | escape }}
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Meal hero",
+  "tag": "section",
+  "class": "section-meal-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Dinner for two, ready in twenty minutes"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Fresh, portioned meals from our kitchen to your door.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Browse meals"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#d9572b"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Meal hero"
+    }
+  ]
+}
+{% endschema %}
