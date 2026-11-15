@@ -1,0 +1,27 @@
+<div class="collection">
+  <header class="collection__header">
+    <h1>{{ collection.title | escape }}</h1>
+    {% if collection.description != blank %}
+      <div class="rte">{{ collection.description }}</div>
+    {% endif %}
+  </header>
+
+  {% paginate collection.products by 12 %}
+    <div class="product-grid">
+      {% for product in collection.products %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        <p>No meals are listed in this collection yet.</p>
+      {% endfor %}
+    </div>
+    {{ paginate | default_pagination }}
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "class": "section-main-collection"
+}
+{% endschema %}

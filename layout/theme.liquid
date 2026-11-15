@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %} &ndash; {{ shop.name | escape }}</title>
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  {{ content_for_header }}
+  <style>
+    :root {
+      --accent: {{ settings.accent_color }};
+      --background: {{ settings.background_color }};
+    }
+  </style>
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'cart-drawer.js' | asset_url }}" type="module" defer></script>
+</head>
+<body class="template-{{ template.name }}" data-currency="{{ shop.currency }}">
+  <a class="skip-link" href="#main">{{ 'general.skip_to_content' | t }}</a>
+  {% section 'header' %}
+  <main id="main">
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+  {% render 'cart-drawer' %}
+</body>
+</html>

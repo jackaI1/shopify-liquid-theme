@@ -1,0 +1,9 @@
+<header class="site-header">
+  <a class="site-header__brand" href="{{ routes.root_url }}">{{ shop.name | escape }}</a>
+  <nav class="site-header__nav" aria-label="Main">
+    <a href="{{ routes.all_products_collection_url }}">All meals</a>
+  </nav>
+  <button type="button" class="site-header__cart" data-cart-open aria-controls="cart-drawer">
+    Cart (<span data-cart-count>{{ cart.item_count }}</span>)
+  </button>
+</header>

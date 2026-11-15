@@ -1,0 +1,45 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+<div class="product">
+  <div class="product__media">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 1200 | image_tag: class: 'product__image', loading: 'eager', sizes: '(min-width: 750px) 50vw, 100vw', alt: product.featured_image.alt | escape }}
+    {% endif %}
+  </div>
+  <div class="product__info">
+    <h1 class="product__title">{{ product.title | escape }}</h1>
+    <p class="product__price" data-variant-price>{{ current_variant.price | money }}</p>
+    <div class="rte">{{ product.description }}</div>
+
+    {% form 'product', product, class: 'product__form' %}
+      {% if product.has_only_default_variant %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+      {% else %}
+        <label class="product__label" for="variant-{{ section.id }}">Portion</label>
+        <select id="variant-{{ section.id }}" name="id" data-variant-select>
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" data-price-cents="{{ variant.price }}" {% if variant == current_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+              {{ variant.title | escape }}
+            </option>
+          {% endfor %}
+        </select>
+      {% endif %}
+
+      <label class="product__label" for="quantity-{{ section.id }}">Quantity</label>
+      <input id="quantity-{{ section.id }}" type="number" name="quantity" value="1" min="1" max="99">
+
+      <button type="submit" class="button" {% unless current_variant.available %}disabled{% endunless %}>
+        {% if current_variant.available %}Add to cart{% else %}Sold out{% endif %}
+      </button>
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "section",
+  "class": "section-main-product"
+}
+{% endschema %}

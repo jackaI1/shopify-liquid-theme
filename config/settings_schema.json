@@ -1,0 +1,49 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Fresh Plate",
+    "theme_version": "1.0.0",
+    "theme_author": "Jack Lai",
+    "theme_documentation_url": "https://github.com/jackaI1/shopify-liquid-theme",
+    "theme_support_url": "https://github.com/jackaI1/shopify-liquid-theme/issues"
+  },
+  {
+    "name": "Store",
+    "settings": [
+      {
+        "type": "text",
+        "id": "store_tagline",
+        "label": "Tagline",
+        "default": "Chef-cooked meals, delivered"
+      }
+    ]
+  },
+  {
+    "name": "Delivery",
+    "settings": [
+      {
+        "type": "number",
+        "id": "free_delivery_threshold",
+        "label": "Free delivery over (whole dollars)",
+        "default": 40
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Accent color",
+        "default": "#d9572b"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fbf7f2"
+      }
+    ]
+  }
+]
